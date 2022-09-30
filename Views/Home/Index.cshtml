@@ -1,0 +1,109 @@
+﻿@using PsychicsGame.Controllers;
+@{
+    HomeController homeController = new HomeController();
+}
+@model List<string>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-4">
+            <h2>Загадайте число от 10 до 99</h2>
+            <p>
+                <div class="alert alert-secondary">
+                    Загадайте любое двузначное число и нажмите на кнопку "Начать игру".
+                </div>
+            </p>
+            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Начать игру &raquo;</a></p>
+
+            <p>
+                <div class="alert alert-secondary">
+                    Введите загаданное число и нажмите на кнопку "Начать тест".
+                </div>
+            </p>
+            <form method="post" action="/Home/StartTest">
+                <div class="form-group">
+                    <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
+                    <span asp-validation-for="userValue" />
+                </div>
+                <input type="submit" class="btn btn-warning btn-lg btn-block" value="Начать тест" />
+            </form>
+
+            <p>
+                <div>
+                    <p><h2>История загаданных чисел:</h2></p>
+                    <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetUserHistory", "Home")'" href="#" role="button">Показать &raquo;</a></p>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><p><h4>Числа:</h4></p></td>
+                            </tr>
+                            @if (ViewBag.ModelUserAnswer != null)
+                            {
+                                foreach (var value in ViewBag.ModelUserAnswer)
+                                {
+                                    <tr>
+                                        <td><p>@value.Value</p></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </p>
+        </div>
+
+        <div class="col-md-8">
+            <p><h2>Экстрасенсы:</h2></p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><p><h4>Имя экстрасенса:</h4></p></td>
+                        <td><p><h4>Достоверность:</h4></p></td>
+                        <td><p><h4>Догадка:</h4></p></td>
+                        <td></td>
+                    </tr>
+                    @if (ViewBag.Model != null)
+                    {
+                        foreach (var data in ViewBag.Model)
+                        {
+
+                            <tr>
+                                <td><p>@data.Name</p></td>
+                                <td><p>@data.Validity</p></td>
+                                <td><p>@data.Value</p></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <div class="col-md-8">
+                <p><h2>История догадок экстрасенсов:</h2></p>
+                <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetPsychicsHistory", "Home")'" href="#" role="button">Показать &raquo;</a></p>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><p><h4>Имя экстрасенса:</h4></p></td>
+                            <td><p><h4>История догадок:</h4></p></td>
+                        </tr>
+                        @if (ViewBag.ModelPsychicAnswer != null)
+                        {
+                            foreach (var value in ViewBag.ModelPsychicAnswer)
+                            {
+                                <tr>
+                                    <td><p>@value.Name</p></td>
+                                    <td><p>@value.Value</p></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
