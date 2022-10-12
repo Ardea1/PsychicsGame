@@ -1,71 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using PsychicsGame.MainGame;
 using PsychicsGame.Models;
 using PsychicsGame.DataService;
-using System.Net;
-using System.Net.Http;
 
 namespace PsychicsGame.Controllers
 {
 
     public class HomeController : Controller
     {
-        PsychicsService service = new PsychicsService();
-        public List<PsychicModel> psyData;
+        public PsychicsService service = new PsychicsService();
 
-        public List<UserAnswerModel> userValue = new List<UserAnswerModel>();
-        public List<PsychicAnswerModel> psychicAnswer = new List<PsychicAnswerModel>();
+        public Game game = new Game();
+
+        public GameModel gameModel = new GameModel();
 
         public ActionResult Index()
         {
-            psyData = service.GetNewPsychics();
-            ViewBag.Model = psyData;
-
-            ViewBag.ModelUserAnswer = userValue;
-            ViewBag.ModelPsychicAnswer = psychicAnswer;
+            gameModel.psychics = service.GetNewPsychics();
+            ViewBag.Model = gameModel.psychics;
 
             return View();
         }
 
         /// <summary>
-        /// Получаем догидки экстрасенсов и сохраняем в сессию
+        /// Получаем догадки экстрасенсов и сохраняем в сессию
         /// </summary>
         /// <returns></returns>
         public ActionResult StartGame()
         {
-            if (Session["psyData"] == null)
+            if (Session["game"] == null)
             {
-                psyData = service.GetNewPsychics();
+                gameModel.psychics = service.GetNewPsychics();
             }
             else
             {
-                psyData = Session["psyData"] as List<PsychicModel>;
-                userValue = Session["userData"] as List<UserAnswerModel>;
-                psychicAnswer = Session["psychicAnswerData"] as List<PsychicAnswerModel>;
+                game = Session["game"] as Game;
             }
 
-            Random rnd = new Random();
+            game.StartGame();
 
-            foreach (var p in psyData)
-            {
-                var answer = new PsychicAnswerModel
-                {
-                    Value = rnd.Next(10, 99)
-                };
-                p.AddValue(answer);
-                p.Value = answer.Value;
+            Session["game"] = game;
 
-                psychicAnswer.Add(new PsychicAnswerModel { Name = p.Name, Value = p.Value });
-            }
+            game = Session["game"] as Game;
 
-            Session["psyData"] = psyData;
-
-            psyData = Session["psyData"] as List<PsychicModel>;
-
-            ViewBag.Model = psyData;
-
-            Session["psychicAnswerData"] = psychicAnswer;
+            ViewBag.Model = gameModel.psychics;
 
             return View("Index");
         }
@@ -81,72 +61,51 @@ namespace PsychicsGame.Controllers
                 return View("Index");
             }
 
-            if (Session["userData"] == null)
+            if (Session["game"] == null)
             {
-                Session["userData"] = userValue;
+                Session["game"] = game;
             }
-            if (Session["psyData"] != null)
+            if (Session["game"] != null)
             {
-                psyData = Session["psyData"] as List<PsychicModel>;
-                userValue = Session["userData"] as List<UserAnswerModel>;
-                psychicAnswer = Session["psychicAnswerData"] as List<PsychicAnswerModel>;
+                game = Session["game"] as Game;
 
 
                 // Берём данные из формы
                 int res = Convert.ToInt32(Request.Form["userValue"]);
 
-                userValue.Add(new UserAnswerModel { Value = res });
-
-                foreach (var p in psyData)
-                {
-
-                    if (p.Value == res)
-                    {
-                        p.Validity += 10;
-
-                    }
-                    else
-                        p.Validity -= 10;
-                }
+                game.StartTest(res);
             }
 
-            Session["psyData"] = psyData;
+            Session["game"] = game;
 
-            psyData = Session["psyData"] as List<PsychicModel>;
+            game = Session["game"] as Game;
 
-            ViewBag.Model = psyData;
-
-            Session["userData"] = userValue;
+            ViewBag.Model = game;
 
             return View("Index");
         }
 
         public ActionResult GetUserHistory()
         {
-            if (Session["userData"] != null)
+            if (Session["game"] != null)
             {
-                psyData = Session["psyData"] as List<PsychicModel>;
-                userValue = Session["userData"] as List<UserAnswerModel>;
+                game = Session["game"] as Game;
             }
 
-            ViewBag.Model = psyData;
-            ViewBag.ModelUserAnswer = userValue;
-            ViewBag.ModelPsychicAnswer = psychicAnswer;
+            ViewBag.Model = game;
 
             return View("Index");
         }
 
         public ActionResult GetPsychicsHistory()
         {
-            if (Session["psyData"] != null)
+            if (Session["game"] != null)
             {
-                psyData = Session["psyData"] as List<PsychicModel>;
-                psychicAnswer = Session["psychicAnswerData"] as List<PsychicAnswerModel>;
+                game = Session["game"] as Game;
 
             }
 
-            ViewBag.Model = psyData;
-            ViewBag.ModelPsychicAnswer = psychicAnswer;
+            ViewBag.Model = game;
 
             return View("Index");
         }

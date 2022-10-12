@@ -122,9 +122,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataService\PsychicsService.cs" />
+    <Compile Include="MainGame\Game.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MainGame\StorageGame.cs" />
+    <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\PsychicAnswerModel.cs" />
     <Compile Include="Models\PsychicModel.cs" />
     <Compile Include="Models\UserAnswerModel.cs" />
@@ -141,6 +144,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
