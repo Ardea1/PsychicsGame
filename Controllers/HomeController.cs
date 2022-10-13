@@ -18,8 +18,6 @@ namespace PsychicsGame.Controllers
         {
             ViewBag.Model = gameModel.psychics;
 
-            Session["game"] = game;
-
             return View();
         }
 
@@ -33,7 +31,11 @@ namespace PsychicsGame.Controllers
             {
                 game = Session["game"] as Game;
             }
-                
+            else
+            {
+                Session["game"] = game;
+            }
+
             game.StartGame();
 
             Session["game"] = game;

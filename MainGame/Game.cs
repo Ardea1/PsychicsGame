@@ -11,7 +11,7 @@ namespace PsychicsGame.MainGame
     {
         private PsychicsService service = new PsychicsService();
 
-        private List<PsychicModel> psychics;
+        private List<PsychicModel> psychics = new List<PsychicModel>();
 
         private List<UserAnswerModel> userValue = new List<UserAnswerModel>();
 
@@ -43,7 +43,6 @@ namespace PsychicsGame.MainGame
 
             foreach (var psychic in psychics)
             {
-
                 if (psychic.Value == res)
                 {
                     psychic.Validity += 10;
