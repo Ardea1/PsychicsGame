@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PsychicsGame.Models
+﻿namespace PsychicsGame.Models
 {
     public class PsychicAnswerModel
     {

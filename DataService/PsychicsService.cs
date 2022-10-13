@@ -7,29 +7,30 @@ namespace PsychicsGame.DataService
     {
         public List<PsychicModel> GetNewPsychics()
         {
-            var psy = new List<PsychicModel>();
-
-            psy.Add(new PsychicModel
+            List<PsychicModel> psychic = new List<PsychicModel>
             {
-                Name = "Ванга",
-                Validity = 50
-            });
-            psy.Add(new PsychicModel
-            {
-                Name = "Нострадамус",
-                Validity = 50
-            });
-            psy.Add(new PsychicModel
-            {
-                Name = "Джуна",
-                Validity = 50
-            });
-            psy.Add(new PsychicModel
-            {
-                Name = "Чумак",
-                Validity = 50
-            });
-            return psy;
+                new PsychicModel
+                {
+                    Name = "Ванга",
+                    Validity = 50
+                },
+                new PsychicModel
+                {
+                    Name = "Нострадамус",
+                    Validity = 50
+                },
+                new PsychicModel
+                {
+                    Name = "Джуна",
+                    Validity = 50
+                },
+                new PsychicModel
+                {
+                    Name = "Чумак",
+                    Validity = 50
+                }
+            };
+            return psychic;
         }
     }
 }

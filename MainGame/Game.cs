@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using PsychicsGame.DataService;
 using PsychicsGame.Models;
 
@@ -34,7 +32,7 @@ namespace PsychicsGame.MainGame
 
                 psychicAnswer.Add(new PsychicAnswerModel { Name = psychic.Name, Value = psychic.Value });
             }
-           // GetGameModel();
+            // GetGameModel();
         }
 
         public void StartTest(int res)
@@ -54,8 +52,10 @@ namespace PsychicsGame.MainGame
 
         private void GetGameModel()
         {
-            GameModel gameModel = new GameModel();
-            gameModel.psychics = psychics;
+            _ = new GameModel
+            {
+                Psychics = psychics
+            };
         }
 
     }

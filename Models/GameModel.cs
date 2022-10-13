@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using PsychicsGame.Models;
 
 namespace PsychicsGame.Models
 {
     public class GameModel
     {
-        public List<PsychicModel> psychics { get; set; }
+        public List<PsychicModel> Psychics { get; set; }
 
-        public List<PsychicAnswerModel> psychicAnswer { get; set; }
+        public List<PsychicAnswerModel> PsychicAnswer { get; set; }
     }
 }
