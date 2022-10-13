@@ -16,7 +16,7 @@ namespace PsychicsGame.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Model = gameModel.Psychics;
+            ViewBag.Model = game.psychics;
 
             return View();
         }
@@ -31,10 +31,6 @@ namespace PsychicsGame.Controllers
             {
                 game = Session["game"] as Game;
             }
-            else
-            {
-                Session["game"] = game;
-            }
 
             game.StartGame();
 
@@ -42,7 +38,7 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = gameModel.Psychics;
+            ViewBag.Model = game.psychics;
 
             return View("Index");
         }
@@ -77,7 +73,7 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = gameModel.Psychics;
+            ViewBag.Model = game.psychics;
 
             return View("Index");
         }
@@ -89,7 +85,8 @@ namespace PsychicsGame.Controllers
                 game = Session["game"] as Game;
             }
 
-            ViewBag.Model = game;
+            ViewBag.Model = game.psychics;
+            ViewBag.ModelUserAnswer = game.userValue;
 
             return View("Index");
         }
@@ -102,7 +99,8 @@ namespace PsychicsGame.Controllers
 
             }
 
-            ViewBag.Model = game;
+            ViewBag.Model = game.psychics;
+            ViewBag.ModelPsychicAnswer = game.psychicAnswer;
 
             return View("Index");
         }

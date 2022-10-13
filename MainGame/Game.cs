@@ -9,15 +9,18 @@ namespace PsychicsGame.MainGame
     {
         private PsychicsService service = new PsychicsService();
 
-        private List<PsychicModel> psychics = new List<PsychicModel>();
+        public List<PsychicModel> psychics = new List<PsychicModel>();
 
-        private List<UserAnswerModel> userValue = new List<UserAnswerModel>();
+        public List<UserAnswerModel> userValue = new List<UserAnswerModel>();
 
-        private List<PsychicAnswerModel> psychicAnswer = new List<PsychicAnswerModel>();
+        public List<PsychicAnswerModel> psychicAnswer = new List<PsychicAnswerModel>();
 
         public void StartGame()
         {
-            psychics = service.GetNewPsychics();
+            if (psychics.Count == 0)
+            {
+                psychics = service.GetNewPsychics();
+            }
             
             Random random = new Random();
 
