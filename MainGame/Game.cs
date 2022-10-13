@@ -9,8 +9,6 @@ namespace PsychicsGame.MainGame
 {
     public class Game
     {
-        private GameModel gameModel = new GameModel();
-
         private PsychicsService service = new PsychicsService();
 
         private List<PsychicModel> psychics;
@@ -21,8 +19,8 @@ namespace PsychicsGame.MainGame
 
         public void StartGame()
         {
-            GetGameModel();
-
+            psychics = service.GetNewPsychics();
+            
             Random random = new Random();
 
             foreach (var psychic in psychics)
@@ -36,6 +34,7 @@ namespace PsychicsGame.MainGame
 
                 psychicAnswer.Add(new PsychicAnswerModel { Name = psychic.Name, Value = psychic.Value });
             }
+           // GetGameModel();
         }
 
         public void StartTest(int res)
@@ -48,7 +47,6 @@ namespace PsychicsGame.MainGame
                 if (psychic.Value == res)
                 {
                     psychic.Validity += 10;
-
                 }
                 else
                     psychic.Validity -= 10;
@@ -57,7 +55,8 @@ namespace PsychicsGame.MainGame
 
         private void GetGameModel()
         {
-            psychics = gameModel.psychics;
+            GameModel gameModel = new GameModel();
+            gameModel.psychics = psychics;
         }
 
     }

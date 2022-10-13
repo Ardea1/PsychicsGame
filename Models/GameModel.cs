@@ -8,8 +8,8 @@ namespace PsychicsGame.Models
 {
     public class GameModel
     {
-        public List<PsychicModel> psychics = new List<PsychicModel>();
+        public List<PsychicModel> psychics { get; set; }
 
-        public List<PsychicAnswerModel> psychicAnswer;
+        public List<PsychicAnswerModel> psychicAnswer { get; set; }
     }
 }

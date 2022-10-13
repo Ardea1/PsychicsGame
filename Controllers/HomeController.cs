@@ -10,16 +10,15 @@ namespace PsychicsGame.Controllers
 
     public class HomeController : Controller
     {
-        public PsychicsService service = new PsychicsService();
-
         public Game game = new Game();
 
         public GameModel gameModel = new GameModel();
 
         public ActionResult Index()
         {
-            gameModel.psychics = service.GetNewPsychics();
             ViewBag.Model = gameModel.psychics;
+
+            Session["game"] = game;
 
             return View();
         }
@@ -30,15 +29,11 @@ namespace PsychicsGame.Controllers
         /// <returns></returns>
         public ActionResult StartGame()
         {
-            if (Session["game"] == null)
-            {
-                gameModel.psychics = service.GetNewPsychics();
-            }
-            else
+            if (Session["game"] != null)
             {
                 game = Session["game"] as Game;
             }
-
+                
             game.StartGame();
 
             Session["game"] = game;
@@ -80,7 +75,7 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = game;
+            ViewBag.Model = gameModel.psychics;
 
             return View("Index");
         }
