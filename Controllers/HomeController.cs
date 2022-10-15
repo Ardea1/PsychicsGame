@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using PsychicsGame.MainGame;
 using PsychicsGame.Models;
-using PsychicsGame.DataService;
 
 namespace PsychicsGame.Controllers
 {
@@ -63,9 +62,9 @@ namespace PsychicsGame.Controllers
                 game = Session["game"] as Game;
 
                 // Берём данные из формы
-                int res = Convert.ToInt32(Request.Form["userValue"]);
+                int userNumber = Convert.ToInt32(Request.Form["userValue"]);
 
-                game.StartTest(res);
+                game.StartTest(userNumber);
             }
 
             Session["game"] = game;

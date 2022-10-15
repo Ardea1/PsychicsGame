@@ -12,22 +12,22 @@ namespace PsychicsGame.DataService
                 new PsychicModel
                 {
                     Name = "Ванга",
-                    Validity = 50
+                    Validity = 100
                 },
                 new PsychicModel
                 {
                     Name = "Нострадамус",
-                    Validity = 50
+                    Validity = 100
                 },
                 new PsychicModel
                 {
                     Name = "Джуна",
-                    Validity = 50
+                    Validity = 100
                 },
                 new PsychicModel
                 {
                     Name = "Чумак",
-                    Validity = 50
+                    Validity = 100
                 }
             };
             return psychic;

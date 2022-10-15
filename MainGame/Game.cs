@@ -38,13 +38,13 @@ namespace PsychicsGame.MainGame
             // GetGameModel();
         }
 
-        public void StartTest(int res)
+        public void StartTest(int userNumber)
         {
-            userValue.Add(new UserAnswerModel { Value = res });
+            userValue.Add(new UserAnswerModel { Value = userNumber });
 
             foreach (var psychic in psychics)
             {
-                if (psychic.Value == res)
+                if (psychic.Value == userNumber)
                 {
                     psychic.Validity += 10;
                 }
@@ -55,10 +55,7 @@ namespace PsychicsGame.MainGame
 
         private void GetGameModel()
         {
-            _ = new GameModel
-            {
-                Psychics = psychics
-            };
+            GameModel gameModel = new GameModel();
         }
 
     }
