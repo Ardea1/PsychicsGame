@@ -62,7 +62,6 @@ namespace PsychicsGame.Controllers
             {
                 game = Session["game"] as Game;
 
-
                 // Берём данные из формы
                 int res = Convert.ToInt32(Request.Form["userValue"]);
 
@@ -96,7 +95,6 @@ namespace PsychicsGame.Controllers
             if (Session["game"] != null)
             {
                 game = Session["game"] as Game;
-
             }
 
             ViewBag.Model = game.psychics;

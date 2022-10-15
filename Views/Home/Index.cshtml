@@ -55,23 +55,44 @@
 
                 </div>
             </p>
+                <p><h2>История догадок экстрасенсов:</h2></p>
+                <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetPsychicsHistory", "Home")'" href="#" role="button">Показать &raquo;</a></p>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><p><h4>Имя и догадки:</h4></p></td>
+                        </tr>
+                        @if (ViewBag.ModelPsychicAnswer != null)
+                        {
+
+                            foreach (var value in ViewBag.Model)
+                            {
+                                <tr><td><p>@value.Name:</p></td></tr>
+                                for (int i = 0; i < value.PsychicValues.Count; i++)
+                                {
+                                    <tr>
+                                        <td><p>@value.PsychicValues[i].Value</p></td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
         </div>
 
         <div class="col-md-8">
             <p><h2>Экстрасенсы:</h2></p>
-            <table class="table">
+            <table class="table table-striped">
                 <tbody>
                     <tr>
                         <td><p><h4>Имя экстрасенса:</h4></p></td>
                         <td><p><h4>Достоверность:</h4></p></td>
                         <td><p><h4>Догадка:</h4></p></td>
-                        <td></td>
                     </tr>
                     @if (ViewBag.Model != null)
                     {
                         foreach (var data in ViewBag.Model)
                         {
-
                             <tr>
                                 <td><p>@data.Name</p></td>
                                 <td><p>@data.Validity</p></td>
@@ -81,30 +102,6 @@
                     }
                 </tbody>
             </table>
-
-            <div class="col-md-8">
-                <p><h2>История догадок экстрасенсов:</h2></p>
-                <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetPsychicsHistory", "Home")'" href="#" role="button">Показать &raquo;</a></p>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td><p><h4>Имя экстрасенса:</h4></p></td>
-                            <td><p><h4>История догадок:</h4></p></td>
-                        </tr>
-                        @if (ViewBag.ModelPsychicAnswer != null)
-                        {
-                            foreach (var value in ViewBag.ModelPsychicAnswer)
-                            {
-                                <tr>
-                                    <td><p>@value.Name</p></td>
-                                    <td><p>@value.Value</p></td>
-                                </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-            </div>
-
         </div>
     </div>
 </div>

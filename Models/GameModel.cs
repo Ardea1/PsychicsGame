@@ -8,5 +8,7 @@ namespace PsychicsGame.Models
         public List<PsychicModel> Psychics { get; set; }
 
         public List<PsychicAnswerModel> PsychicAnswer { get; set; }
+
+        public List<UserAnswerModel> UserValue { get; set; }
     }
 }
