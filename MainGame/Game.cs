@@ -9,11 +9,9 @@ namespace PsychicsGame.MainGame
     {
         private PsychicsService service = new PsychicsService();
 
-        public List<PsychicModel> psychics = new List<PsychicModel>();
+        private List<PsychicModel> psychics = new List<PsychicModel>();
 
-        public List<UserAnswerModel> userValue = new List<UserAnswerModel>();
-
-        public List<PsychicAnswerModel> psychicAnswer = new List<PsychicAnswerModel>();
+        private List<UserAnswerModel> userValue = new List<UserAnswerModel>();
 
         public void StartGame()
         {
@@ -32,10 +30,7 @@ namespace PsychicsGame.MainGame
                 };
                 psychic.AddValue(answer);
                 psychic.Value = answer.Value;
-
-                psychicAnswer.Add(new PsychicAnswerModel { Name = psychic.Name, Value = psychic.Value });
             }
-            // GetGameModel();
         }
 
         public void StartTest(int userNumber)
@@ -53,10 +48,28 @@ namespace PsychicsGame.MainGame
             }
         }
 
-        private void GetGameModel()
+        // У меня не вышло сделать как в рекомендации:
+        // Делаем в Игре метод, который сформирует и вернёт "Модель" Игры - простой класс
+        // со всеми нужными данными - с "Моделями" экстрасенсов - GameModel, в котором будет
+        // поле PsychicModel[] psychics { get; set; }. С этой моделью мы уже снаружи можем делать,
+        // что хотим - на состояние основного объекта Игра это не повлияет - инкапсуляция сохранена.
+        //
+        // И Я попробовала IReadOnlyList, чтобы открыть Psychics и UserValue только для чтения. 
+        // Возможно, Я что-то не допоняла, поэтому, оставила класс GameModel на будущее и выполнить рекомендации.
+        public IReadOnlyList<PsychicModel> Psychics
         {
-            GameModel gameModel = new GameModel();
+            get
+            {
+                return psychics.AsReadOnly();
+            }
         }
 
+        public IReadOnlyList<UserAnswerModel> UserValue
+        {
+            get
+            {
+                return userValue.AsReadOnly();
+            }
+        }
     }
 }

@@ -27,25 +27,31 @@
     <div class="jumbotron">
         <div class="container">
             <h1>PSYCHICS GAME</h1>
-            <p class="lead">"PSYCHICS GAME" - веб-приложение, тестирующее способности экстрасенсов.</p>
-            <p><a class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" role="button">Подробнее об экстрасенсах &raquo;</a></p>
+            <p class="lead">Проверьте способности экстрасенсов.</p>
+            <p><a class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" role="button">Подробнее об игре &raquo;</a></p>
         </div>
     </div>
 
     <!-- Modal -->
     <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Подробнее об экстрасенсах:</h5>
-                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" onclick="closeModal()">
-                        X
-                        <span aria-hidden="true"></span>
+                    <h3 class="modal-title" id="exampleModalLabel">Правила:</h3>
+                    <button type="button" class="btn btn-close"  data-bs-dismiss="modal" onclick="closeModal()">X<span aria-hidden="true"></span></>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Экстрасенсов не существует
+                    <h4>   
+                        Вам предлагается загадать любое двузначное число.
+                        После этого, необходимо нажать на кнопку "Начать игру" .
+                        Вы увидите таблицу, в которой напротив имени экстрасенса
+                        будут его достоверность и догадка.
+                        Далее, Вы вводите в поле загаданное Вами число и нажимаете
+                        на кнопку "Проверить ответ" . После этого, достоверность
+                        экстрасенсов уменьшится или увеличится, в зависимости от того,
+                        угадал экстрасенс загаданное Вами число или нет.
+                    </h4>
                 </div>
                 <div class="modal-footer">
                     <p><a type="button" href="#" class="btn btn-warning btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Понятно</a></p>

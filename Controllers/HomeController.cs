@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using PsychicsGame.MainGame;
-using PsychicsGame.Models;
 
 namespace PsychicsGame.Controllers
 {
@@ -11,11 +9,11 @@ namespace PsychicsGame.Controllers
     {
         public Game game = new Game();
 
-        public GameModel gameModel = new GameModel();
+        public StorageGame storageGame = new StorageGame();
 
         public ActionResult Index()
         {
-            ViewBag.Model = game.psychics;
+            ViewBag.Model = game.Psychics;
 
             return View();
         }
@@ -37,7 +35,7 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = game.psychics;
+            ViewBag.Model = game.Psychics;
 
             return View("Index");
         }
@@ -46,7 +44,7 @@ namespace PsychicsGame.Controllers
         /// Проверка догадок экстрасенсов
         /// </summary>
         /// <returns></returns>
-        public ActionResult StartTest()
+        public ActionResult AnswerСheck()
         {
             if ((Request.Form["userValue"].Length == 0))
             {
@@ -71,7 +69,7 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = game.psychics;
+            ViewBag.Model = game.Psychics;
 
             return View("Index");
         }
@@ -83,8 +81,8 @@ namespace PsychicsGame.Controllers
                 game = Session["game"] as Game;
             }
 
-            ViewBag.Model = game.psychics;
-            ViewBag.ModelUserAnswer = game.userValue;
+            ViewBag.Model = game.Psychics;
+            ViewBag.ModelUserAnswer = game.UserValue;
 
             return View("Index");
         }
@@ -96,8 +94,31 @@ namespace PsychicsGame.Controllers
                 game = Session["game"] as Game;
             }
 
-            ViewBag.Model = game.psychics;
-            ViewBag.ModelPsychicAnswer = game.psychicAnswer;
+            ViewBag.Model = game.Psychics;
+            ViewBag.ModelPsychicAnswer = game.Psychics;
+
+            return View("Index");
+        }
+
+        public ActionResult SaveGame()
+        {
+            if (Session["game"] != null)
+            {
+                storageGame.SaveGame(game);
+            }
+
+            ViewBag.Model = game.Psychics;
+            ViewBag.ModelUserAnswer = game.UserValue;
+
+            return View("Index");
+        }
+
+        public ActionResult LoadGame()
+        {
+            storageGame.LoadGame();
+
+            ViewBag.Model = game.Psychics;
+            ViewBag.ModelUserAnswer = game.UserValue;
 
             return View("Index");
         }

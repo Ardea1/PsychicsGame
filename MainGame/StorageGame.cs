@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PsychicsGame.MainGame;
 
 namespace PsychicsGame.MainGame
 {
     public class StorageGame
     {
-        private void SaveGame ()
-        {
+        public Game game = new Game();
 
+        public void SaveGame (Game game)
+        {
+            HttpContext.Current.Session["game"] = game;
         }
 
-        private void LoadGame()
+        public Game LoadGame()
         {
-
+            return (Game)HttpContext.Current.Session["game"];
         }
     }
 }
