@@ -37,7 +37,7 @@ namespace PsychicsGame.Controllers
 
             ViewBag.Model = game.Psychics;
 
-            return View("Index");
+            return PartialView("_Game");
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace PsychicsGame.Controllers
 
             ViewBag.Model = game.Psychics;
 
-            return View("Index");
+            return PartialView("_Game");
         }
 
         public ActionResult GetHistory()
@@ -88,6 +88,19 @@ namespace PsychicsGame.Controllers
             return PartialView("_GetHistory");
         }
 
+        public ActionResult Game()
+        {
+            if (Session["game"] != null)
+            {
+                game = Session["game"] as Game;
+            }
+
+            ViewBag.Model = game.Psychics;
+            ViewBag.ModelUserAnswer = game.UserValue;
+
+            return PartialView("_Game");
+        }
+
         public ActionResult SaveGame()
         {
             if (Session["game"] != null)
@@ -98,7 +111,7 @@ namespace PsychicsGame.Controllers
             ViewBag.Model = game.Psychics;
             ViewBag.ModelUserAnswer = game.UserValue;
 
-            return View("Index");
+            return PartialView("_Game");
         }
 
         public ActionResult LoadGame()
@@ -108,7 +121,7 @@ namespace PsychicsGame.Controllers
             ViewBag.Model = game.Psychics;
             ViewBag.ModelUserAnswer = game.UserValue;
 
-            return View("Index");
+            return PartialView("_Game");
         }
     }
 }

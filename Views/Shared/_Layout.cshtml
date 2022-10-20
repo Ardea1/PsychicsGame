@@ -16,17 +16,34 @@
             /*background-image: url('https://abrakadabra.fun/uploads/posts/2022-03/1646880815_7-abrakadabra-fun-p-zatumanennii-les-12.jpg');*/
             background-size: cover;
         }
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 60px;
+            background: #edeef0;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 
 <body>
-    <main>
+    <div class="wrapper">
         <header>
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark" style="background-color: #282828; ">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">
-                        <img src="~/content/Images/icon.png" width="30" height="30" class="d-inline-block align-center" alt="">  Тестирование экстрасенсов
+                        <img src="~/content/Images/icon.png" width="30" height="30" class="d-inline-block align-center" alt="">  Psychics game
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -44,77 +61,78 @@
                         </li>
                     </ul>
                 </div>
-                    
+
             </nav>
             <!-- Navbar -->
         </header>
 
-        <div class="jumbotron jumbotron bg-cover"> 
-            <div class="container">
-                <div class="text-white">
-                    <h1>PSYCHICS GAME</h1>
-                    <p class="lead">Проверьте способности экстрасенсов.</p>
-                </div>
-                <!-- Button trigger modal -->
-                <p><a class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" role="button">Подробнее об игре</a></p>
-            </div>
-        </div>
-
-
-
-        <div class="body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <div class="text-white" style="background-color: #282828; padding:30px">
-                    <div class="container">
-                        <p>&copy; @DateTime.Now.Year - Тестирование экстрасенсов</p>
+        <main>
+            <div class="jumbotron jumbotron bg-cover">
+                <div class="container">
+                    <div class="text-white">
+                        <h1>PSYCHICS GAME</h1>
+                        <p class="lead">Проверьте способности экстрасенсов.</p>
                     </div>
-                </div>
-            </footer>
-        </div>
-
-    </main>
-
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-
-        <!-- Modal -->
-        <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Правила:</h3>
-                        <button type="button" class="btn btn-close" data-bs-dismiss="modal" onclick="closeModal()">
-                            X<span aria-hidden="true"></span></>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <p>
-                            <h4>
-                                Вам предлагается загадать любое двузначное число.
-                                После этого, необходимо нажать на кнопку "Начать игру".
-                                Вы увидите таблицу, в которой напротив имени экстрасенса
-                                будут его достоверность и догадка.
-                                Далее, Вы вводите в поле загаданное Вами число и нажимаете
-                                на кнопку "Проверить ответ". После этого, достоверность
-                                экстрасенсов уменьшится или увеличится, в зависимости от того,
-                                угадал экстрасенс загаданное Вами число или нет.
-                            </h4>
-                        </p>
-                    </div>
-
-                    <div class="modal-footer">
-                        <p><a type="button" href="#" class="btn btn-warning btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Понятно</a></p>
-                    </div>
+                    <!-- Button trigger modal -->
+                    <p><a class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" role="button">Подробнее об игре</a></p>
                 </div>
             </div>
+        </main>
+    </div>
+
+    <div class="footer">
+
+        <hr />
+        <footer>
+            <div class="text-white" style="background-color: #282828; padding:30px">
+                <div class="container">
+                    <p>&copy; @DateTime.Now.Year - Тестирование экстрасенсов</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    @RenderBody()
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Modal -->
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Правила:</h3>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" onclick="closeModal()">
+                        X<span aria-hidden="true"></span></>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>
+                        <h4>
+                            Вам предлагается загадать любое двузначное число.
+                            После этого, необходимо нажать на кнопку "Начать игру".
+                            Вы увидите таблицу, в которой напротив имени экстрасенса
+                            будут его достоверность и догадка.
+                            Далее, Вы вводите в поле загаданное Вами число и нажимаете
+                            на кнопку "Проверить ответ". После этого, достоверность
+                            экстрасенсов уменьшится или увеличится, в зависимости от того,
+                            угадал экстрасенс загаданное Вами число или нет.
+                        </h4>
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <p><a type="button" href="#" class="btn btn-warning btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Понятно</a></p>
+                </div>
+            </div>
         </div>
-        <!-- Modal -->
+    </div>
+    <!-- Modal -->
 
 </body>
 </html>

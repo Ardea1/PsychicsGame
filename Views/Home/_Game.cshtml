@@ -1,0 +1,71 @@
+﻿@using PsychicsGame.Controllers;
+@{
+    HomeController homeController = new HomeController();
+}
+@model List<string>
+@{
+    ViewBag.Title = "Игра";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Игра</li>
+        </ol>
+    </nav>
+
+    <div class="row ">
+        <div class="col-md-4">
+            <h2>Загадайте число от 10 до 99</h2>
+
+            <p>
+                <div class="alert alert-secondary">
+                    Загадайте любое двузначное число и нажмите на кнопку "Начать игру".
+                </div>
+            </p>
+
+            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Начать игру</a></p>
+            <p>
+                <div class="alert alert-secondary">
+                    Введите загаданное число и нажмите на кнопку "Отправить ответ".
+                </div>
+            </p>
+
+            <form method="post" action="/Home/AnswerСheck">
+                <div class="form-group">
+                    <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
+                    <span asp-validation-for="userValue" />
+                </div>
+                <input type="submit" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" />
+            </form>
+
+        </div>
+
+        <div class="col-md-8">
+            <p><h2>Экстрасенсы:</h2></p>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td><p><h4>Имя экстрасенса:</h4></p></td>
+                        <td><p><h4>Достоверность:</h4></p></td>
+                        <td><p><h4>Догадка:</h4></p></td>
+                    </tr>
+                    @if (ViewBag.Model != null)
+                    {
+                        foreach (var data in ViewBag.Model)
+                        {
+                            <tr>
+                                <td><p>@data.Name</p></td>
+                                <td><p>@data.Validity</p></td>
+                                <td><p>@data.Value</p></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
