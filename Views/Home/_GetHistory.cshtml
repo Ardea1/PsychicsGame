@@ -1,0 +1,67 @@
+﻿@using PsychicsGame.Controllers;
+@{
+    HomeController homeController = new HomeController();
+}
+@model List<string>
+@{
+    ViewBag.Title = "ИИстория загаданных чисел";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">История загаданных чисел</li>
+        </ol>
+    </nav>
+
+    <div class="col-md-6">
+        <p>
+            <div>
+                <p><h2>История загаданных чисел:</h2></p>
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        @if (ViewBag.ModelUserAnswer != null)
+                        {
+                            foreach (var value in ViewBag.ModelUserAnswer)
+                            {
+                                <tr>
+                                    <td><p>@value.Value</p></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        <p>
+            <div>
+                <p><h2>История догадок экстрасенсов:</h2></p>
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        @if (ViewBag.ModelPsychicAnswer != null)
+                        {
+                            foreach (var value in ViewBag.Model)
+                            {
+                                  <tr>
+                                      <td><p>@value.Name:</p></td>
+                                  </tr>
+                                for (int i = 0; i < value.PsychicValues.Count; i++)
+                                {
+                                  <tr>
+                                      <td><p>@value.PsychicValues[i].Value</p></td>
+                                  </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </p>
+    </div>
+</div>

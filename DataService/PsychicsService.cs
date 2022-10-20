@@ -28,6 +28,16 @@ namespace PsychicsGame.DataService
                 {
                     Name = "Чумак",
                     Validity = 100
+                },
+                new PsychicModel
+                {
+                    Name = "Дух Хаоса",
+                    Validity = 100
+                },
+                new PsychicModel
+                {
+                    Name = "Доктор Костя",
+                    Validity = 100
                 }
             };
             return psychic;

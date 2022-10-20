@@ -8,7 +8,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="container">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Главная</li>
+        </ol>
+    </nav>
+
     <div class="row ">
         <div class="col-md-4">
             <h2>Загадайте число от 10 до 99</h2>
@@ -19,12 +27,10 @@
                 </div>
             </p>
 
-            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Начать игру &raquo;</a></p>
-            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("SaveGame", "Home")'" href="#" role="button">Сохранить игру &raquo;</a></p>
-            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("LoadGame", "Home")'" href="#" role="button">Загрузить игру &raquo;</a></p>
+            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Начать игру</a></p>
             <p>
                 <div class="alert alert-secondary">
-                    Введите загаданное число и нажмите на кнопку "Начать тест".
+                    Введите загаданное число и нажмите на кнопку "Отправить ответ".
                 </div>
             </p>
 
@@ -33,58 +39,9 @@
                     <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
                     <span asp-validation-for="userValue" />
                 </div>
-                <input type="submit" class="btn btn-warning btn-lg btn-block" value="Проверить ответ" />
+                <input type="submit" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" />
             </form>
 
-            <p>
-                <div>
-                    <p><h2>История введённых пользователем чисел:</h2></p>
-                    <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetUserHistory", "Home")'" href="#" role="button">Показать &raquo;</a></p>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><p><h4>Числа:</h4></p></td>
-                            </tr>
-                            @if (ViewBag.ModelUserAnswer != null)
-                            {
-                                foreach (var value in ViewBag.ModelUserAnswer)
-                                {
-                                    <tr>
-                                        <td><p>@value.Value</p></td>
-                                    </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </p>
-
-            <p>
-                <div>
-                    <p><h2>История догадок экстрасенсов:</h2></p>
-                    <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetPsychicsHistory", "Home")'" href="#" role="button">Показать &raquo;</a></p>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><p><h4>Имя и догадки:</h4></p></td>
-                            </tr>
-                            @if (ViewBag.ModelPsychicAnswer != null)
-                            {
-                                foreach (var value in ViewBag.Model)
-                                {
-                                    <tr><td><p>@value.Name:</p></td></tr>
-                                    for (int i = 0; i < value.PsychicValues.Count; i++)
-                                    {
-                                        <tr>
-                                            <td><p>@value.PsychicValues[i].Value</p></td>
-                                        </tr>
-                                    }
-                                }
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </p>
         </div>
 
         <div class="col-md-8">
@@ -97,7 +54,7 @@
                         <td><p><h4>Догадка:</h4></p></td>
                     </tr>
                     @if (ViewBag.Model != null)
-                     {
+                    {
                         foreach (var data in ViewBag.Model)
                         {
                             <tr>
@@ -106,7 +63,7 @@
                                 <td><p>@data.Value</p></td>
                             </tr>
                         }
-                     }
+                    }
                 </tbody>
             </table>
         </div>

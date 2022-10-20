@@ -74,7 +74,7 @@ namespace PsychicsGame.Controllers
             return View("Index");
         }
 
-        public ActionResult GetUserHistory()
+        public ActionResult GetHistory()
         {
             if (Session["game"] != null)
             {
@@ -83,21 +83,9 @@ namespace PsychicsGame.Controllers
 
             ViewBag.Model = game.Psychics;
             ViewBag.ModelUserAnswer = game.UserValue;
-
-            return View("Index");
-        }
-
-        public ActionResult GetPsychicsHistory()
-        {
-            if (Session["game"] != null)
-            {
-                game = Session["game"] as Game;
-            }
-
-            ViewBag.Model = game.Psychics;
             ViewBag.ModelPsychicAnswer = game.Psychics;
 
-            return View("Index");
+            return PartialView("_GetHistory");
         }
 
         public ActionResult SaveGame()
