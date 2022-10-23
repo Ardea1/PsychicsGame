@@ -11,10 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
     <style type="text/css">
-        .bg-cover {
-            background-image: url('content/Images/Forest.jpg');
-            background-size: cover;
-        }
         html {
             position: relative;
             min-height: 100%;
@@ -29,65 +25,56 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 60px;
+            height: 30px;
             background-color: #f5f5f5;
         }
     </style>
 </head>
 
 <body>
-    <div class="wrapper">
         <header>
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark" style="background-color: #282828; ">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
-                        <img src="~/content/Images/icon.gif" width="30" height="30" class="d-inline-block align-center" alt="">  Psychics game
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <div class="container-fluid justify-content-start">
+                    <a class="navbar-brand" href="#">Psychics game</a>
+                </div>
 
+                <div class="container-fluid justify-content-end">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item p-2">
                             <p><a class="btn btn-outline-light" id="StartGame" onclick="location.href='@Url.Action("GetHistory", "Home")'" href="#" role="button">История загаданных чисел</a></p>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item p-2">
                             <p><a class="btn btn-outline-light" id="SaveGame" onclick="location.href='@Url.Action("SaveGame", "Home")'" href="#" role="button">Сохранить игру</a></p>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item p-2">
                             <p><a class="btn btn-outline-light" id="LoadGame" onclick="location.href='@Url.Action("LoadGame", "Home")'" href="#" role="button">Загрузить игру</a></p>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item p-2">
                             <p><a class="btn btn-outline-light" id="LoadGame" onclick="location.href='@Url.Action("ClearGame", "Home")'" href="#" role="button">Очистить игру</a></p>
                         </li>
                     </ul>
                 </div>
-
             </nav>
-            <!-- Navbar -->
+             <!-- Navbar -->
         </header>
 
         <main>
-            <div class="jumbotron jumbotron bg-cover">
-                <div class="container">
-                    <div class="text-white">
+            <div class="jumbotron">
+                <div class="container-fluid">
+                    <div class="text-center">
                         <h1>PSYCHICS GAME</h1>
-                        <p class="lead">Проверьте способности экстрасенсов.</p>
+                        <p class="lead">Проверьте способности экстрасенсов</p>
                     </div>
-                    <!-- Button trigger modal -->
-                    <p><a class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" role="button">Подробнее об игре</a></p>
                 </div>
             </div>
         </main>
-    </div>
 
     <div class="footer">
 
-        <hr />
         <footer>
             <div class="text-white" style="background-color: #282828; padding:30px">
-                <div class="container">
+                <div class="container-fluid">
                     <p>&copy; @DateTime.Now.Year - Тестирование экстрасенсов</p>
                 </div>
             </div>
@@ -101,40 +88,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <!-- Modal -->
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Правила:</h3>
-                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" onclick="closeModal()">
-                        X<span aria-hidden="true"></span></>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <p>
-                        <h4>
-                            Вам предлагается загадать любое двузначное число.
-                            После этого, необходимо нажать на кнопку "Начать игру".
-                            Вы увидите таблицу, в которой напротив имени экстрасенса
-                            будут его достоверность и догадка.
-                            Далее, Вы вводите в поле загаданное Вами число и нажимаете
-                            на кнопку "Проверить ответ". После этого, достоверность
-                            экстрасенсов уменьшится или увеличится, в зависимости от того,
-                            угадал экстрасенс загаданное Вами число или нет.
-                        </h4>
-                    </p>
-                </div>
-
-                <div class="modal-footer">
-                    <p><a type="button" href="#" class="btn btn-warning btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Понятно</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
 
 </body>
 </html>
