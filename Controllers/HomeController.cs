@@ -62,7 +62,7 @@ namespace PsychicsGame.Controllers
                 // Берём данные из формы
                 int userNumber = Convert.ToInt32(Request.Form["userValue"]);
 
-                game.StartTest(userNumber);
+                game.AnswerСheck(userNumber);
             }
 
             Session["game"] = game;
@@ -118,10 +118,21 @@ namespace PsychicsGame.Controllers
         {
             storageGame.LoadGame();
 
-            ViewBag.Model = game.Psychics;
-            ViewBag.ModelUserAnswer = game.UserValue;
+            //ViewBag.Model = game.Psychics;
+            //ViewBag.ModelUserAnswer = game.UserValue;
+
+            return PartialView("_Game");
+        }
+
+        public ActionResult ClearGame()
+        {
+            Session.Clear();
+
+            //ViewBag.Model = game.Psychics;
+            //ViewBag.ModelUserAnswer = game.UserValue;
 
             return PartialView("_Game");
         }
     }
 }
+
