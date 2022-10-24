@@ -17,9 +17,8 @@
         </ol>
     </nav>
 
-    <div class="row ">
-        <div class="col-md-4">
-            <h2>Загадайте число от 10 до 99</h2>
+    <div class="col-md-3">
+            <h3>Загадайте число от 10 до 99</h3>
 
             <p>
                 <div class="alert alert-secondary">
@@ -28,30 +27,16 @@
             </p>
 
             <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Начать игру</a></p>
-            <p>
-                <div class="alert alert-secondary">
-                    Введите загаданное число и нажмите на кнопку "Отправить ответ".
-                </div>
-            </p>
-
-            <form method="post" action="/Home/AnswerСheck">
-                <div class="form-group">
-                    <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
-                    <span asp-validation-for="userValue" />
-                </div>
-                <input type="submit" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" />
-            </form>
-
         </div>
 
-        <div class="col-md-8">
-            <p><h2>Экстрасенсы:</h2></p>
+        <div class="col-md-6">
+            <p><h3>Экстрасенсы:</h3></p>
             <table class="table table-striped">
                 <tbody>
                     <tr>
-                        <td><p><h4>Имя экстрасенса:</h4></p></td>
-                        <td><p><h4>Достоверность:</h4></p></td>
-                        <td><p><h4>Догадка:</h4></p></td>
+                        <td><p><h5>Имя экстрасенса:</h5></p></td>
+                        <td><p><h5>Достоверность:</h5></p></td>
+                        <td><p><h5>Догадка:</h5></p></td>
                     </tr>
                     @if (ViewBag.Model != null)
                     {
@@ -67,5 +52,21 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
+        <div class="col-md-3">
+            <h3>Введите загаданное число</h3>
+                <p>
+                    <div class="alert alert-secondary">
+                        Введите загаданное число и нажмите на кнопку "Отправить ответ".
+                    </div>
+                </p>
+                <form method="post" action="/Home/AnswerСheck">
+                    <div class="form-group">
+                        <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
+                        <span asp-validation-for="userValue" />
+
+                        <p><input type="submit" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" /></p>
+                    </div>
+                </form>
+        </div>
 </div>

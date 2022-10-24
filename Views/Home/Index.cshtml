@@ -9,42 +9,43 @@
 }
 
 
-<div class="container-fluid">
-    <div class="d-grid gap-2 col-6 mx-auto">
+<div class="container-fluid justify-content-center">
+    <div class="d-flex justify-content-center">
         <!-- Button trigger modal -->
         <p><a class="btn btn-warning btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#gameModal" href="#" role="button">Нажми, чтобы начать игру</a></p>
     </div>
-</div>
 
-<!-- Modal -->
-<div class="modal" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="gameModalLabel">Правила:</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
 
-            <div class="modal-body">
-                <p>
-                    <h4>
-                        Вам предлагается загадать любое двузначное число.
-                        После этого, необходимо нажать на кнопку "Начать игру".
-                        Вы увидите таблицу, в которой напротив имени экстрасенса
-                        будут его достоверность и догадка.
-                        Далее, Вы вводите в поле загаданное Вами число и нажимаете
-                        на кнопку "Проверить ответ". После этого, достоверность
-                        экстрасенсов уменьшится или увеличится, в зависимости от того,
-                        угадал экстрасенс загаданное Вами число или нет.
-                    </h4>
-                </p>
-            </div>
+    <!-- Modal -->
+    <div class="modal" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="gameModalLabel">Правила:</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-            <div class="modal-footer">
-                <p><a type="button" href="#" class="btn btn-secondary btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Закрыть</a></p>
-                <p><a class="btn btn-warning btn-md btn-block" id="StartGame" onclick="location.href='@Url.Action("Game", "Home")'" href="#" role="button">Играть</a></p>
+                <div class="modal-body">
+                    <p>
+                        <h5>
+                            Вам предлагается загадать любое двузначное число.
+                            После этого, необходимо нажать на кнопку "Начать игру".
+                            Вы увидите таблицу, в которой напротив имени экстрасенса
+                            будут его достоверность и догадка.
+                            Далее, Вы вводите в поле загаданное Вами число и нажимаете
+                            на кнопку "Проверить ответ". После этого, достоверность
+                            экстрасенсов уменьшится или увеличится, в зависимости от того,
+                            угадал экстрасенс загаданное Вами число или нет.
+                        </h5>
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <p><a type="button" href="#" class="btn btn-secondary btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Закрыть</a></p>
+                    <p><a class="btn btn-warning btn-md btn-block" id="StartGame" onclick="location.href='@Url.Action("Game", "Home")'" href="#" role="button">Играть</a></p>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Modal -->
 </div>
-<!-- Modal -->
