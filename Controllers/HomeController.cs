@@ -48,7 +48,7 @@ namespace PsychicsGame.Controllers
         {
             if ((Request.Form["userValue"].Length == 0))
             {
-                return View("Index");
+                return View("_Game");
             }
 
             if (Session["game"] == null)

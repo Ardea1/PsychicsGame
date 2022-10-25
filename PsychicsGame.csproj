@@ -171,6 +171,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_GetHistory.cshtml" />
     <Content Include="Views\Home\_Game.cshtml" />
+    <Content Include="Views\Home\_Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,56 +17,64 @@
         </ol>
     </nav>
 
-    <div class="col-md-3">
-            <h3>Загадайте число от 10 до 99</h3>
+    <div class="col-md-4">
+        <h3>Загадайте число от 10 до 99</h3>
 
-            <p>
-                <div class="alert alert-secondary">
-                    Загадайте любое двузначное число и нажмите на кнопку "Готово".
+        <p class="lead p-3">
+            <h5>Загадайте любое <strong>двузначное число</strong> и нажмите на кнопку <strong>"Готово".</strong></h5>
+        </p>
+
+        <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Готово</a></p>
+        <!-- Button trigger modal -->
+        <p><a class="btn btn-warning btn-lg btn-block" id="further" data-bs-toggle="modal" data-bs-target="#gameModal" href="#" role="button">Далее</a></p>
+    </div>
+
+    @Html.Partial("_Table")
+
+    <!-- Modal -->
+    <div class="modal" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="gameModalLabel">Правила:</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </p>
 
-            <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("StartGame", "Home")'" href="#" role="button">Готово</a></p>
-        </div>
+                <div class="modal-body">
+                    <div class="col justify-content-center">
+                        <h3>Введите загаданное число</h3>
+                        <p class="lead">
+                            <h5>Введите загаданное число и нажмите на кнопку <strong>"Отправить ответ".</strong></h5>
+                        </p>
+                        <form method="post" action="/Home/AnswerСheck">
+                            <div class="form-group">
+                                <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
+                                <span asp-validation-for="userValue" />
 
-        <div class="col-md-6">
-            <p><h3>Экстрасенсы:</h3></p>
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td><p><h5>Имя экстрасенса:</h5></p></td>
-                        <td><p><h5>Достоверность:</h5></p></td>
-                        <td><p><h5>Догадка:</h5></p></td>
-                    </tr>
-                    @if (ViewBag.Model != null)
-                    {
-                        foreach (var data in ViewBag.Model)
-                        {
-                            <tr>
-                                <td><p>@data.Name</p></td>
-                                <td><p>@data.Validity</p></td>
-                                <td><p>@data.Value</p></td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-md-3">
-            <h3>Введите загаданное число</h3>
-                <p>
-                    <div class="alert alert-secondary">
-                        Введите загаданное число и нажмите на кнопку "Отправить ответ".
+                                <p><input type="submit" id="AnswerСheck" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" /></p>
+                            </div>
+                        </form>
                     </div>
-                </p>
-                <form method="post" action="/Home/AnswerСheck">
-                    <div class="form-group">
-                        <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
-                        <span asp-validation-for="userValue" />
+                </div>
 
-                        <p><input type="submit" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" /></p>
-                    </div>
-                </form>
+                <div class="modal-footer">
+                    <p><a type="button" href="#" class="btn btn-secondary btn-md" data-bs-dismiss="modal" onclick="closeModal()" role="button">Закрыть</a></p>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- Modal -->
+
+    <script>
+        function disablefirstbutton() {
+            this.disabled = true;
+            document.getElementById("further").disabled = true;
+        }
+
+        function disablesecondbutton() {
+            document.getElementById("further").disabled = true;
+            document.getElementById("StartGame").disabled = false;
+        }
+    </script>
+
 </div>

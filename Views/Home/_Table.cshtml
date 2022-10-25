@@ -1,0 +1,38 @@
+﻿
+
+<div class="col-md-8">
+    <p><h3>Экстрасенсы:</h3></p>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Экстрасенсы думают...</span>
+        </div>
+    </div>
+    <table class="table table-striped d-none">
+        <tbody>
+            <tr>
+                <td><p><h5>Имя экстрасенса:</h5></p></td>
+                <td><p><h5>Достоверность:</h5></p></td>
+                <td><p><h5>Догадка:</h5></p></td>
+            </tr>
+            @if (ViewBag.Model != null)
+            {
+                foreach (var data in ViewBag.Model)
+                {
+                    <tr>
+                        <td><p>@data.Name</p></td>
+                        <td><p>@data.Validity</p></td>
+                        <td><p>@data.Value</p></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <script>
+        setTimeout(function () {
+            document.querySelector('div > .spinner-border').classList.add('d-none');
+            document.querySelector('.table').classList.remove('d-none');
+        }, 1200)
+    </script>
+
+</div>
