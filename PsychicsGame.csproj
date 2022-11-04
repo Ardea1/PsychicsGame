@@ -172,6 +172,7 @@
     <Content Include="Views\Home\_GetHistory.cshtml" />
     <Content Include="Views\Home\_Game.cshtml" />
     <Content Include="Views\Home\_Table.cshtml" />
+    <Content Include="Views\Home\_UserAnswer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,13 +18,18 @@
     </nav>
 
     <div class="col-md-4">
-        <h3>Загадайте число от 10 до 99</h3>
-
-        <p class="lead p-3">
-            <h5>Загадайте любое <strong>двузначное число</strong> и нажмите на кнопку <strong>"Готово".</strong></h5>
+        <p class="lead">
+            <h5>Введите загаданное число и нажмите на кнопку <strong>"Отправить ответ".</strong></h5>
         </p>
+        <form method="post" action="/Home/AnswerСheck">
+            <div class="form-group">
+                <input type="number" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
+                <span asp-validation-for="userValue" />
 
-        <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href= '@Url.Action("StartGame", "Home")'" href="#" role="button">Готово</a></p>
+                <p><input type="submit" id="AnswerСheck" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" /></p>
+            </div>
+        </form>
+
     </div>
 
     @Html.Partial("_Table")

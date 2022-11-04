@@ -37,7 +37,7 @@ namespace PsychicsGame.Controllers
 
             ViewBag.Model = game.Psychics;
 
-            return PartialView("_Game");
+            return PartialView("_UserAnswer");
         }
 
         /// <summary>
