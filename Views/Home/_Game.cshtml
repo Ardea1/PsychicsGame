@@ -25,6 +25,8 @@
         </p>
 
         <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href= '@Url.Action("StartGame", "Home")'" href="#" role="button">Готово</a></p>
+
+        <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetHistory", "Home")'" href="#" role="button">История загаданных чисел</a></p>
     </div>
 
     @Html.Partial("_Table")
