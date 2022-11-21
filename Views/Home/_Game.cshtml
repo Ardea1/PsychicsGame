@@ -1,8 +1,4 @@
-﻿@using PsychicsGame.Controllers;
-@{
-    HomeController homeController = new HomeController();
-}
-@model List<string>
+﻿@model List<string>
 @{
     ViewBag.Title = "Игра";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,30 +13,26 @@
         </ol>
     </nav>
 
-    <div class="col-md-4">
-        <h3>Загадайте число от 10 до 99</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Загадайте число от 10 до 99</h3>
 
-        <p class="lead p-3">
-            <h5>Загадайте любое <strong>двузначное число</strong> и нажмите на кнопку <strong>"Готово".</strong></h5>
-        </p>
+            <p class="lead p-3">
+                <h5>Загадайте любое <strong>двузначное число</strong> и нажмите на кнопку <strong>"Готово".</strong></h5>
+            </p>
 
-        <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href= '@Url.Action("StartGame", "Home")'" href="#" role="button">Готово</a></p>
+            <p><a class="btn btn-warning btn-lg btn-block" id="StartRound" onclick="location.href= '@Url.Action("StartRound", "Home")'" href="#" role="button">Готово</a></p>
+        </div>
 
-        <p><a class="btn btn-warning btn-lg btn-block" id="StartGame" onclick="location.href='@Url.Action("GetHistory", "Home")'" href="#" role="button">История загаданных чисел</a></p>
+        <div class="col-md-8">
+            @Html.Partial("_Table")
+        </div>
     </div>
 
-    @Html.Partial("_Table")
-
-    <script>
-        function disablefirstbutton() {
-            this.disabled = true;
-            document.getElementById("further").disabled = true;
-        }
-
-        function disablesecondbutton() {
-            document.getElementById("further").disabled = true;
-            document.getElementById("StartGame").disabled = false;
-        }
-    </script>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Partial("_History")
+        </div>
+    </div>
 
 </div>

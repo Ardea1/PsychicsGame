@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PsychicsGame.Models
 {
@@ -10,6 +11,8 @@ namespace PsychicsGame.Models
 
         public int Value { get; set; }
 
+        Random random;
+
         public List<PsychicAnswerModel> PsychicValues = new List<PsychicAnswerModel>();
 
         /// <summary>
@@ -19,6 +22,18 @@ namespace PsychicsGame.Models
         public void AddValue(PsychicAnswerModel value)
         {
             PsychicValues.Add(value);
+        }
+
+        public PsychicModel()
+        {
+            random = new Random();
+        }
+
+        public int GetRandomValue()
+        {
+            int value = random.Next(10, 99);
+            return value;
+
         }
     }
 }

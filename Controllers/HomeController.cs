@@ -9,8 +9,6 @@ namespace PsychicsGame.Controllers
     {
         public Game game = new Game();
 
-        public StorageGame storageGame = new StorageGame();
-
         public ActionResult Index()
         {
             ViewBag.Model = game.Psychics;
@@ -22,7 +20,7 @@ namespace PsychicsGame.Controllers
         /// Получаем догадки экстрасенсов и сохраняем в сессию
         /// </summary>
         /// <returns></returns>
-        public ActionResult StartGame()
+        public ActionResult StartRound()
         {
             if (Session["game"] != null)
             {
@@ -36,6 +34,8 @@ namespace PsychicsGame.Controllers
             game = Session["game"] as Game;
 
             ViewBag.Model = game.Psychics;
+            ViewBag.ModelUserAnswer = game.UserValue;
+            ViewBag.ModelPsychicAnswer = game.Psychics;
 
             return PartialView("_UserAnswer");
         }
@@ -70,22 +70,10 @@ namespace PsychicsGame.Controllers
             game = Session["game"] as Game;
 
             ViewBag.Model = game.Psychics;
-
-            return PartialView("_Game");
-        }
-
-        public ActionResult GetHistory()
-        {
-            if (Session["game"] != null)
-            {
-                game = Session["game"] as Game;
-            }
-
-            ViewBag.Model = game.Psychics;
             ViewBag.ModelUserAnswer = game.UserValue;
             ViewBag.ModelPsychicAnswer = game.Psychics;
 
-            return PartialView("_GetHistory");
+            return PartialView("_Game");
         }
 
         public ActionResult Game()
@@ -97,29 +85,7 @@ namespace PsychicsGame.Controllers
 
             ViewBag.Model = game.Psychics;
             ViewBag.ModelUserAnswer = game.UserValue;
-
-            return PartialView("_Game");
-        }
-
-        public ActionResult SaveGame()
-        {
-            if (Session["game"] != null)
-            {
-                storageGame.SaveGame(game);
-            }
-
-            ViewBag.Model = game.Psychics;
-            ViewBag.ModelUserAnswer = game.UserValue;
-
-            return PartialView("_Game");
-        }
-
-        public ActionResult LoadGame()
-        {
-            storageGame.LoadGame();
-
-            //ViewBag.Model = game.Psychics;
-            //ViewBag.ModelUserAnswer = game.UserValue;
+            ViewBag.ModelPsychicAnswer = game.Psychics;
 
             return PartialView("_Game");
         }

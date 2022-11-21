@@ -127,7 +127,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MainGame\StorageGame.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\PsychicAnswerModel.cs" />
     <Compile Include="Models\PsychicModel.cs" />
@@ -169,7 +168,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_GetHistory.cshtml" />
+    <Content Include="Views\Home\_History.cshtml" />
     <Content Include="Views\Home\_Game.cshtml" />
     <Content Include="Views\Home\_Table.cshtml" />
     <Content Include="Views\Home\_UserAnswer.cshtml" />

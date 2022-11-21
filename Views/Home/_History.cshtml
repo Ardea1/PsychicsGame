@@ -1,0 +1,45 @@
+﻿<p><h3>История загаданных чисел и догадок экстрасенсов:</h3></p>
+        <div class="table">
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th><h5>Загаданные числа:</h5></th>
+
+                        @if (ViewBag.ModelUserAnswer != null)
+                         {
+                            foreach (var value in ViewBag.ModelUserAnswer)
+                            {
+                                <td>@value.Value</td>
+
+                            }
+                         }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><h5>Имя экстрасенса:</h5></th>
+                        @if (ViewBag.ModelPsychicAnswer != null)
+                        {
+                            foreach (var value in ViewBag.ModelUserAnswer)
+                            {
+                                <th><h5>Догадка:</h5></th>
+                            }
+                        }
+                    </tr>
+
+                    @if (ViewBag.ModelPsychicAnswer != null)
+                    {
+                        foreach (var value in ViewBag.Model)
+                        {
+                            <tr>
+                                <td>@value.Name:</td>
+                                @for (int i = 0; i < value.PsychicValues.Count; i++)
+                                 {
+                                    <td>@value.PsychicValues[i].Value</td>
+                                 }
+                            </tr>
+                        }
+                     }
+                </tbody>
+            </table>
+        </div>
