@@ -15,7 +15,7 @@ namespace PsychicsGame.MainGame
 
         private List<UserAnswerModel> userValue = new List<UserAnswerModel>();
 
-        public void StartGame()
+        public void StartRound()
         {
             if (psychics.Count == 0)
             {

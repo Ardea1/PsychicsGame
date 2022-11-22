@@ -27,7 +27,7 @@ namespace PsychicsGame.Controllers
                 game = Session["game"] as Game;
             }
 
-            game.StartGame();
+            game.StartRound();
 
             Session["game"] = game;
 
