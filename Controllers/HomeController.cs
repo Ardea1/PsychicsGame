@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using PsychicsGame.MainGame;
+using PsychicsGame.Models;
 
 namespace PsychicsGame.Controllers
 {
@@ -40,10 +41,6 @@ namespace PsychicsGame.Controllers
             return PartialView("_UserAnswer");
         }
 
-        /// <summary>
-        /// Проверка догадок экстрасенсов
-        /// </summary>
-        /// <returns></returns>
         public ActionResult AnswerСheck()
         {
             if ((Request.Form["userValue"].Length == 0))
@@ -93,9 +90,6 @@ namespace PsychicsGame.Controllers
         public ActionResult ClearGame()
         {
             Session.Clear();
-
-            //ViewBag.Model = game.Psychics;
-            //ViewBag.ModelUserAnswer = game.UserValue;
 
             return PartialView("_Game");
         }

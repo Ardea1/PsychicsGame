@@ -9,6 +9,8 @@ namespace PsychicsGame.MainGame
     {
         private PsychicModel psychicModel = new PsychicModel();
 
+        private GameModel model = new GameModel();
+
         private PsychicsService service = new PsychicsService();
 
         private List<PsychicModel> psychics = new List<PsychicModel>();
@@ -35,7 +37,7 @@ namespace PsychicsGame.MainGame
 
         public void AnswerСheck(int userNumber)
         {
-            userValue.Add(new UserAnswerModel { Value = userNumber });
+            userValue.Add(new UserAnswerModel { UserValue = userNumber });
 
             foreach (var psychic in psychics)
             {
@@ -48,7 +50,14 @@ namespace PsychicsGame.MainGame
             }
         }
 
-       public IReadOnlyList<PsychicModel> Psychics
+        public GameModel GetModel()
+        {
+            model.Psychics = psychics;
+            model.UserValue = userValue;
+            return model;
+        }
+
+        public IReadOnlyList<PsychicModel> Psychics
         {
             get
             {
