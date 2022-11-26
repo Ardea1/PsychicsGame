@@ -131,6 +131,7 @@
     <Compile Include="Models\PsychicAnswerModel.cs" />
     <Compile Include="Models\PsychicModel.cs" />
     <Compile Include="Models\UserAnswerModel.cs" />
+    <Compile Include="PreventDuplicateRequestAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

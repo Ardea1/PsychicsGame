@@ -21,52 +21,70 @@ namespace PsychicsGame.Controllers
         /// Получаем догадки экстрасенсов и сохраняем в сессию
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult StartRound()
         {
-            if (Session["game"] != null)
+            if (ModelState.IsValid)
             {
+                if (Session["game"] != null)
+                {
+                    game = Session["game"] as Game;
+                }
+
+                game.StartRound();
+
+                Session["game"] = game;
+
                 game = Session["game"] as Game;
+
+                var model = game.GetModel();
+
+                return PartialView("_UserAnswer", model);
             }
-
-            game.StartRound();
-
-            Session["game"] = game;
-
             game = Session["game"] as Game;
-
-            var model = game.GetModel();
-
-            return PartialView("_UserAnswer", model);
+            var viewModel = game.GetModel();
+            return PartialView("_UserAnswer", viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult AnswerСheck()
         {
-            if ((Request.Form["userValue"].Length == 0))
+            if (ModelState.IsValid)
             {
-                return View("_Game");
-            }
+                if ((Request.Form["userValue"].Length == 0))
+                {
+                    return View("_Game");
+                }
 
-            if (Session["game"] == null)
-            {
+                if (Session["game"] == null)
+                {
+                    Session["game"] = game;
+                }
+                if (Session["game"] != null)
+                {
+                    game = Session["game"] as Game;
+
+                    // Берём данные из формы
+                    int userNumber = Convert.ToInt32(Request.Form["userValue"]);
+
+                    game.AnswerСheck(userNumber);
+                }
+
                 Session["game"] = game;
-            }
-            if (Session["game"] != null)
-            {
+
                 game = Session["game"] as Game;
 
-                // Берём данные из формы
-                int userNumber = Convert.ToInt32(Request.Form["userValue"]);
+                var model = game.GetModel();
 
-                game.AnswerСheck(userNumber);
+                return PartialView("_Game", model);
             }
-
-            Session["game"] = game;
-
             game = Session["game"] as Game;
-
-            var model = game.GetModel();
-
-            return PartialView("_Game", model);
+            var viewModel = game.GetModel();
+            return PartialView("_Game", viewModel);
         }
 
         public ActionResult Game()
