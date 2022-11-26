@@ -1,4 +1,4 @@
-﻿@model List<string>
+﻿@model PsychicsGame.Models.GameModel
 @{
     ViewBag.Title = "Игра";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,14 +28,14 @@
             </form>
         </div>
 
-            <div class="col-md-8">
-                @Html.Partial("_Table")
-            </div>
+        <div class="col-md-8">
+            @Html.Partial("_Table")
+        </div>
     </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                @Html.Partial("_History")
-            </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Partial("_History")
         </div>
+    </div>
 </div>

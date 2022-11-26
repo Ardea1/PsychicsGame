@@ -15,9 +15,9 @@
             </tr>
         </thead>
             <tbody>
-                @if (ViewBag.Model != null)
+                @if (Model != null)
                 {
-                    foreach (var data in ViewBag.Model)
+                    foreach (var data in Model.Psychics)
                     {
                         <tr>
                             <td><p>@data.Name</p></td>

@@ -12,9 +12,9 @@ namespace PsychicsGame.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Model = game.Psychics;
+            var model = game.GetModel();
 
-            return View();
+            return View(model);
         }
 
         /// <summary>
@@ -34,11 +34,9 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = game.Psychics;
-            ViewBag.ModelUserAnswer = game.UserValue;
-            ViewBag.ModelPsychicAnswer = game.Psychics;
+            var model = game.GetModel();
 
-            return PartialView("_UserAnswer");
+            return PartialView("_UserAnswer", model);
         }
 
         public ActionResult AnswerСheck()
@@ -66,11 +64,9 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            ViewBag.Model = game.Psychics;
-            ViewBag.ModelUserAnswer = game.UserValue;
-            ViewBag.ModelPsychicAnswer = game.Psychics;
+            var model = game.GetModel();
 
-            return PartialView("_Game");
+            return PartialView("_Game", model);
         }
 
         public ActionResult Game()
@@ -80,18 +76,18 @@ namespace PsychicsGame.Controllers
                 game = Session["game"] as Game;
             }
 
-            ViewBag.Model = game.Psychics;
-            ViewBag.ModelUserAnswer = game.UserValue;
-            ViewBag.ModelPsychicAnswer = game.Psychics;
+            var model = game.GetModel();
 
-            return PartialView("_Game");
+            return PartialView("_Game", model);
         }
 
         public ActionResult ClearGame()
         {
             Session.Clear();
 
-            return PartialView("_Game");
+            var model = game.GetModel();
+
+            return PartialView("_Game", model);
         }
     }
 }

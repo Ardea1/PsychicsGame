@@ -9,8 +9,6 @@ namespace PsychicsGame.MainGame
     {
         private PsychicModel psychicModel = new PsychicModel();
 
-        private GameModel model = new GameModel();
-
         private PsychicsService service = new PsychicsService();
 
         private List<PsychicModel> psychics = new List<PsychicModel>();
@@ -52,6 +50,7 @@ namespace PsychicsGame.MainGame
 
         public GameModel GetModel()
         {
+            var model = new GameModel();
             model.Psychics = psychics;
             model.UserValue = userValue;
             return model;
