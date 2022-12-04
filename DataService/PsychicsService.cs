@@ -5,7 +5,7 @@ namespace PsychicsGame.DataService
 {
     public class PsychicsService
     {
-        public List<PsychicModel> GetNewPsychics()
+        public List<PsychicModel> GetPsychics()
         {
             List<PsychicModel> psychic = new List<PsychicModel>
             {

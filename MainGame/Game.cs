@@ -15,12 +15,17 @@ namespace PsychicsGame.MainGame
 
         private List<UserAnswerModel> userValue = new List<UserAnswerModel>();
 
-        public void StartRound()
+        public void StartGame()
         {
             if (psychics.Count == 0)
             {
-                psychics = service.GetNewPsychics();
+                psychics = service.GetPsychics();
             }
+        }
+
+        public void StartRound()
+        {
+           // psychics = service.GetNewPsychics();
 
             foreach (var psychic in psychics)
             {
@@ -54,22 +59,6 @@ namespace PsychicsGame.MainGame
             model.Psychics = psychics;
             model.UserValue = userValue;
             return model;
-        }
-
-        public IReadOnlyList<PsychicModel> Psychics
-        {
-            get
-            {
-                return psychics.AsReadOnly();
-            }
-        }
-
-        public IReadOnlyList<UserAnswerModel> UserValue
-        {
-            get
-            {
-                return userValue.AsReadOnly();
-            }
         }
     }
 }

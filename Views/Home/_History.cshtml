@@ -1,46 +1,47 @@
-﻿
+﻿@model PsychicsGame.Models.GameModel
+
 <p><h3>История загаданных чисел и догадок экстрасенсов:</h3></p>
-        <div class="table">
-            <table class="table table-striped table-responsive">
-                <thead>
-                    <tr>
-                        <th><h5>Загаданные числа:</h5></th>
+<div class="table">
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th><h5>Загаданные числа:</h5></th>
 
-                        @if (Model.UserValue != null)
-                         {
-                            foreach (var value in Model.UserValue)
-                            {
-                                <td>@value.UserValue</td>
-
-                            }
-                         }
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th><h5>Имя экстрасенса:</h5></th>
-                        @if (Model.Psychics != null)
-                        {
-                            foreach (var value in Model.UserValue)
-                            {
-                                <th><h5>Догадка:</h5></th>
-                            }
-                        }
-                    </tr>
-
-                    @if (Model.Psychics != null)
+                @if (Model.UserValue != null)
+                {
+                    foreach (var value in Model.UserValue)
                     {
-                        foreach (var value in Model.Psychics)
+                        <td>@value.UserValue</td>
+
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><h5>Имя экстрасенса:</h5></th>
+                @if (Model.Psychics != null)
+                {
+                    foreach (var value in Model.UserValue)
+                    {
+                        <th><h5>Догадка:</h5></th>
+                    }
+                }
+            </tr>
+
+            @if (Model.Psychics != null)
+            {
+                foreach (var value in Model.Psychics)
+                {
+                    <tr>
+                        <td>@value.Name:</td>
+                        @for (int i = 0; i < value.PsychicValues.Count; i++)
                         {
-                            <tr>
-                                <td>@value.Name:</td>
-                                @for (int i = 0; i < value.PsychicValues.Count; i++)
-                                 {
-                                    <td>@value.PsychicValues[i].Value</td>
-                                 }
-                            </tr>
+                            <td>@value.PsychicValues[i].Value</td>
                         }
-                     }
-                </tbody>
-            </table>
-        </div>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

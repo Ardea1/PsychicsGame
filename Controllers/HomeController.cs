@@ -43,8 +43,10 @@ namespace PsychicsGame.Controllers
 
                 return PartialView("_UserAnswer", model);
             }
+
             game = Session["game"] as Game;
             var viewModel = game.GetModel();
+
             return PartialView("_UserAnswer", viewModel);
         }
 
@@ -55,11 +57,6 @@ namespace PsychicsGame.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ((Request.Form["userValue"].Length == 0))
-                {
-                    return View("_Game");
-                }
-
                 if (Session["game"] == null)
                 {
                     Session["game"] = game;
@@ -82,17 +79,25 @@ namespace PsychicsGame.Controllers
 
                 return PartialView("_Game", model);
             }
+
             game = Session["game"] as Game;
             var viewModel = game.GetModel();
+
             return PartialView("_Game", viewModel);
         }
 
-        public ActionResult Game()
+        public ActionResult StartGame()
         {
             if (Session["game"] != null)
             {
                 game = Session["game"] as Game;
             }
+
+            game.StartGame();
+
+            Session["game"] = game;
+
+            game = Session["game"] as Game;
 
             var model = game.GetModel();
 
