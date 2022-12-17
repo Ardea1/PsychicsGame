@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using PsychicsGame.Models;
 
-namespace PsychicsGame.Models
+namespace PsychicsGame.PsychicNamespace
 {
-    public class PsychicModel
+    public class Psychic
     {
-        public string Name { get; set; }
+        private Random random;
 
-        public int Validity { get; set; }
+        private string names;
 
-        public int Value { get; set; }
+        private int validity;
 
-        Random random;
+        private int values;
 
         public List<PsychicAnswerModel> PsychicValues = new List<PsychicAnswerModel>();
 
@@ -24,16 +27,25 @@ namespace PsychicsGame.Models
             PsychicValues.Add(value);
         }
 
-        public PsychicModel()
+        public Psychic()
         {
             random = new Random();
         }
 
         public int GenerateRandomValue()
         {
-            var value = random.Next(10, 99);
+            int value = random.Next(10, 99);
             return value;
 
+        }
+
+        public PsychicModel GetPsychicModel()
+        {
+            var model = new PsychicModel();
+            model.Name = names;
+            model.Validity = validity;
+            model.Value = values;
+            return model;
         }
     }
 }

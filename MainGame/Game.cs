@@ -25,13 +25,11 @@ namespace PsychicsGame.MainGame
 
         public void StartRound()
         {
-           // psychics = service.GetNewPsychics();
-
-            foreach (var psychic in psychics)
+           foreach (var psychic in psychics)
             {
                 var answer = new PsychicAnswerModel
                 {
-                    Value = psychicModel.GetRandomValue()
+                    Value = psychicModel.GenerateRandomValue()
                 };
                 psychic.AddValue(answer);
                 psychic.Value = answer.Value;

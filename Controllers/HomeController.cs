@@ -8,13 +8,13 @@ namespace PsychicsGame.Controllers
 
     public class HomeController : Controller
     {
-        public Game game = new Game();
+        public static Game game = new Game();
+
+        public GameModel model = game.GetModel();
 
         public ActionResult Index()
         {
-            var model = game.GetModel();
-
-            return View(model);
+           return View(model);
         }
 
         /// <summary>
@@ -39,15 +39,12 @@ namespace PsychicsGame.Controllers
 
                 game = Session["game"] as Game;
 
-                var model = game.GetModel();
-
                 return PartialView("_UserAnswer", model);
             }
 
             game = Session["game"] as Game;
-            var viewModel = game.GetModel();
 
-            return PartialView("_UserAnswer", viewModel);
+            return PartialView("_UserAnswer", model);
         }
 
         [HttpPost]
@@ -75,15 +72,12 @@ namespace PsychicsGame.Controllers
 
                 game = Session["game"] as Game;
 
-                var model = game.GetModel();
-
                 return PartialView("_Game", model);
             }
 
             game = Session["game"] as Game;
-            var viewModel = game.GetModel();
 
-            return PartialView("_Game", viewModel);
+            return PartialView("_Game", model);
         }
 
         public ActionResult StartGame()
@@ -99,16 +93,12 @@ namespace PsychicsGame.Controllers
 
             game = Session["game"] as Game;
 
-            var model = game.GetModel();
-
             return PartialView("_Game", model);
         }
 
         public ActionResult ClearGame()
         {
             Session.Clear();
-
-            var model = game.GetModel();
 
             return PartialView("_Game", model);
         }

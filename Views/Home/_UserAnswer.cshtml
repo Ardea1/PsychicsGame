@@ -21,8 +21,9 @@
             <form method="post" action="/Home/AnswerСheck">
                 <div class="form-group">
                     @Html.AntiForgeryToken()
-                    <input type="number" required="" v-model="value" name="userValue" min="10" max="99" id="Value" class="form-control" placeholder="Введите число" /><br>
-                    <span asp-validation-for="userValue" />
+                    @Html.ValidationMessageFor(model => model.UserValue)
+                    <input type="number" @*required=""*@ v-model="value" name="userValue" @*min="10" max="99"*@ id="Value" class="form-control" placeholder="Введите число" /><br>
+                    @*<span asp-validation-for="userValue" />*@
 
                     <p><input type="submit" id="AnswerСheck" class="btn btn-warning btn-lg btn-block" value="Отправить ответ" /></p>
                 </div>
